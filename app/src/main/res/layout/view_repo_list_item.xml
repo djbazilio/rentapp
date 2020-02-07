@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="itemData"
+            type="com.app.rent.model.Film" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/content_margin"
+        android:background="@color/colorWhite"
+        android:elevation="@dimen/elevation">
+    <ImageView
+        android:id="@+id/item_avatar"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"/>
+     <TextView
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:textSize="@dimen/about_size"
+         android:textColor="@color/colorBlack"
+         android:gravity="top|left"
+         android:maxLength="80"
+         android:paddingLeft="@dimen/content_padding"
+         android:paddingRight="@dimen/content_padding"
+         android:paddingBottom="@dimen/content_padding"
+         android:layout_below="@id/item_avatar"
+         android:text="@{itemData.overview!=null?itemData.overview:itemData.title}"/>
+
+    </RelativeLayout>
+</layout>
