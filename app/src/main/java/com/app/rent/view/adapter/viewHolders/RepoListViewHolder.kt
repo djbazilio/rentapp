@@ -18,6 +18,7 @@ class RepoListViewHolder constructor(private val dataBinding: ViewDataBinding, p
         dataBinding.executePendingBindings()
         Picasso.get().load("https://image.tmdb.org/t/p/w370_and_h556_bestv2/"+itemData.poster_path).into(posterImage);
 
+//        itemView.rb_popular.rating = itemData.popularity
         itemView.onClick {
 //            val bundle = bundleOf("url" to itemData.html_url)
 //            itemView.findNavController().navigate(R.id.action_repoListFragment_to_repoDetailFragment, bundle)

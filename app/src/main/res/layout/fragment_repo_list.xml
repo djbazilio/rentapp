@@ -18,7 +18,8 @@
             android:id="@+id/repo_list_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="@{safeUnbox(viewmodel.dataLoading) ? View.GONE : View.VISIBLE}" />
+            android:visibility="@{safeUnbox(viewmodel.dataLoading) ? View.GONE : View.VISIBLE}"
+            />
 
         <ProgressBar
             style="?android:attr/progressBarStyleLarge"

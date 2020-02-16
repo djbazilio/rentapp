@@ -15,20 +15,29 @@
         android:elevation="@dimen/elevation">
     <ImageView
         android:id="@+id/item_avatar"
+        android:src="@drawable/no_img"
         android:layout_width="match_parent"
         android:layout_height="300dp"/>
-     <TextView
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:textSize="@dimen/about_size"
-         android:textColor="@color/colorBlack"
-         android:gravity="top|left"
-         android:maxLength="80"
-         android:paddingLeft="@dimen/content_padding"
-         android:paddingRight="@dimen/content_padding"
-         android:paddingBottom="@dimen/content_padding"
-         android:layout_below="@id/item_avatar"
-         android:text="@{itemData.overview!=null?itemData.overview:itemData.title}"/>
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_below="@id/item_avatar"
+            android:orientation="vertical"
+            android:padding="@dimen/content_padding">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vote Average"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/title_size"/>
+            <RatingBar
+                android:rating="@{itemData.vote_average}"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:numStars="10"
+                />
+        </LinearLayout>
 
     </RelativeLayout>
 </layout>

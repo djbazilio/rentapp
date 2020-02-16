@@ -8,12 +8,12 @@ import retrofit2.Response
 class RepoRepository {
 
     // GET repo list
-    fun getRepoList(onResult: (isSuccess: Boolean, response: MovieResponse?) -> Unit) {
+    fun getRepoList(page:Int, onResult: (isSuccess: Boolean, response: MovieResponse?) -> Unit) {
 
-        ApiClient.instance.getMoviePopular().enqueue(object : Callback<MovieResponse> {
+        ApiClient.instance.getMoviePopular(page=page).enqueue(object : Callback<MovieResponse> {
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
                 if (response != null && response.isSuccessful)
-                    onResult(true, response.body()!!)
+                    onResult(true,  response.body()!!)
                 else
                     onResult(false, null)
             }

@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.app.rent.databinding.FragmentRepoListBinding
 import com.app.rent.view.adapter.RepoListAdapter
 import kotlinx.android.synthetic.main.fragment_repo_list.*
@@ -30,7 +30,7 @@ class RepoListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewDataBinding.viewmodel?.fetchRepoList()
+        viewDataBinding.viewmodel?.fetchRepoList(true)
 
         setupAdapter()
         setupObservers()
@@ -55,6 +55,17 @@ class RepoListFragment : Fragment() {
             repo_list_rv.layoutManager = layoutManager
             repo_list_rv.addItemDecoration(DividerItemDecoration(activity, layoutManager.orientation))
             repo_list_rv.adapter = adapter
+
+            repo_list_rv.addOnScrollListener(mScrollListener)
+        }
+    }
+
+    private val mScrollListener = object : RecyclerView.OnScrollListener() {
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            println("recyclerView " + recyclerView.canScrollVertically(1))
+            viewDataBinding.viewmodel?.fetchRepoList(!recyclerView.canScrollVertically(1))
+            super.onScrolled(recyclerView, dx, dy)
         }
     }
 }
+
